@@ -12,27 +12,24 @@ One training loop took about 3 minutes.
 1. Set up a new conda environment called detectron2 (or what every you want) we used python version: 3.7 ? 
 2. Install detectron2 and its dependencies in this environment
 3. Install LabelMe ("4.5.7") if you use a different version update this in the code/preference.py file.
-	INSTALL PYTHON DEPENDENCIES FOR THE BACKEND? NEED A LIST OF LIBs
-4. Copy the backend directory and it's contents to the computer. Link:
-5. Put your images into the classification directory. 
+4. Copy the backend directory and it's contents to the computer.
+	The backend directory should have classify, code, train and validate directories
+5. Put your images into the classify directory. 
 6. Open Labelme with the --nodata option, see code sample below.
-7. Select the classification dir
+7. In LabelMe select the classify dir and open the images
 8. Start Labelling images.
-9. Run a loop with the go.py script. see code sample below
+9. Run a train loop with the go.py script. see code sample below
 10. Flick through the images in Labelme to see the predicted masks.
-11. Draw new masks or remove _predicted from predicated masks, run the loop and this will be included in the train.
+11. Draw new masks or remove "_predicted" from predicated masks, run the loop and these will be included in the new train.
 12. In labelme open the train dir to see what is being used to make the model
-13. If you want to do validation, copy some images from the classification dir to the validation directory
-14. Open the validation dir in Labelme
-15. Create the validation Labels and save them.
-16. Run the loop, to retrain and classify.
-17. Results can be found in the output/images directory, with preview images and a spreadsheet of data.
-18. Settings for train, classification etc can be changed in the code/preferences file
-
-
-SET UP ON CLOUD MACHINE
-This process relies on all parts being on the one computer, though if you're keen it could be pulled apart to work remotely.
-This will probably be slower than using a local computer because you will need to copy files to and from the server.
+13. If you want to do validation, copy some images from the classify dir to the validate directory
+14. Open the validate dir in Labelme
+15. Create the validation masks and save.
+16. Run the train loop to retrain and classify.
+17. Measurements can be found in a csv file in the output directory
+18. Settings for train, classify etc can be changed in the code/preferences file
+19. Preview images can be created in the preference file.
+20. Each training loop will be backed up and a log file created for each run.
 
 
 ------------------------------------------------------------------------------------------------------------------
@@ -40,7 +37,7 @@ This will probably be slower than using a local computer because you will need t
 HOW TO USE
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
-Open the cmd on windows, terminal on mac and linux
+Open the cmd on windows or terminal on mac and linux
 
 
 TO USE LABELME
@@ -61,10 +58,14 @@ TO RUN SEPERATE PARTS OF THE LOOP
 ---------------------------------------------------------
 conda activate detectron2
 
-python "C:\Users\brendan\Desktop\backend\code\moveToTrain.py" #if you create masks on classification images, this will copy them to the train dir and create the labelme json.
+python "C:\Users\brendan\Desktop\backend\code\moveToTrain.py" 
+#if you create masks on classification images, this will copy them to the train dir and create the labelme json.
 
-python "C:\Users\brendan\Desktop\backend\code\convert.py" #this convert labelme json files to coco formated json for detectron2 to use
+python "C:\Users\brendan\Desktop\backend\code\convert.py" 
+#this will convert labelme json files to coco formated json for detectron2 to use
 
-python "C:\Users\brendan\Desktop\backend\code\train.py" #this will run a train session using settings from the code/preference.py file
+python "C:\Users\brendan\Desktop\backend\code\train.py" 
+#this will run a train session using settings from the code/preference.py file
 
-python "C:\Users\brendan\Desktop\backend\code\classify.py" #this will run a classification/validation/measure using settings from the code/preference.py file
+python "C:\Users\brendan\Desktop\backend\code\classify.py" 
+#this will run a classification/validation/measure using settings from the code/preference.py file
