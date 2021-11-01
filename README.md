@@ -1,4 +1,4 @@
-# Adenosperma1-LabelMe_Detectron2_train_classify_measure_loop
+# LabelMe_Detectron2_train_classify_measure_loop
 Measure features in images using Detectron2.
 Use LabelMe as a front end to Detectron2. 
 Put all images to measure in backend/code and open in LabelMe
