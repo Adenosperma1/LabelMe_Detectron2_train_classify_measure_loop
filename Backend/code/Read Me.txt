@@ -14,6 +14,8 @@ One training loop took about 3 minutes.
 3. Install LabelMe ("4.5.7") if you use a different version update this in the code/preference.py file.
 4. Copy the backend directory and it's contents to the computer.
 	The backend directory should have classify, code, train and validate directories
+	You will need to install all the python dependencies for the 'code' dir, 
+	look in each .py file for these.
 5. Put your images into the classify directory. 
 6. Open Labelme with the --nodata option, see code sample below.
 7. In LabelMe select the classify dir and open the images
